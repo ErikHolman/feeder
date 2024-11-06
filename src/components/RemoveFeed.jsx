@@ -1,3 +1,5 @@
+import './RemoveFeed.css';
+
 const RemoveFeed = () => {
     return <>REMOVE</>;
 };
