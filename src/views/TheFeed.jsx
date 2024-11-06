@@ -1,5 +1,5 @@
 import './TheFeed.css';
-import EntryCard from './EntryCard';
+import EntryCard from '../components/EntryCard';
 
 function TheFeed() {
     <div className='the-feed'>

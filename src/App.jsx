@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import './App.css';
-import Menu from './components/Menu';
-import TheFeed from './components/TheFeed';
+import Menu from './views/Menu';
+import TheFeed from './views/TheFeed';
 
 function App() {
     const [menuVisible, setMenuVisible] = useState(false);
