@@ -1,0 +1,112 @@
+.menu {
+    display: flex;
+    flex-direction: column;
+    width: 80%;
+    height: 80%;
+    border: 1px solid green;
+    justify-content: space-around;
+    align-items: center;
+    background-color: black;
+    color: white;
+    z-index: 999;
+    margin-top: 2rem;
+
+    .feed-buttons {
+        display: flex;
+        flex-direction: column;
+        margin-bottom: 1em;
+
+        .edit-feeds {
+            background-color: white;
+            border-color: transparent;
+        }
+    }
+
+    .feed-list {
+        display: flex;
+        flex-direction: column;
+        border: 1px solid white;
+        width: 70%;
+        height: 400px;
+        padding: 0 1em;
+        margin: 0 auto;
+
+        .list-title {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            align-items: center;
+            height: 50px;
+            .list-left {
+                display: flex;
+                flex-direction: row;
+                align-items: center;
+                justify-content: space-between;
+                width: 70%;
+                margin-left: 0.25em;
+            }
+        }
+
+        .list-feeds {
+            border-top: 1px solid white;
+            display: flex;
+            flex-direction: column;
+            /* overflow-y: scroll; */
+            margin-bottom: 1em;
+            width: 100%;
+
+            .feed {
+                display: flex;
+                flex-direction: row;
+                justify-content: space-between;
+                align-items: center;
+                margin-top: 0.25em;
+                background-color: aliceblue;
+
+                &.muted {
+                    opacity: 0.5;
+                }
+                .feed-left {
+                    display: flex;
+                    flex-direction: row;
+                    justify-content: space-between;
+                    flex-grow: 5;
+                    margin-left: 0.25em;
+                    .title {
+                        text-transform: uppercase;
+                        color: black;
+                        &:hover {
+                            text-decoration: underline;
+                            font-style: italic;
+                        }
+                    }
+
+                    .count {
+                        color: black;
+                        text-align: center;
+                        margin-right: 2rem;
+                    }
+                }
+
+                .feed-right {
+                    display: flex;
+                    flex-direction: row;
+                    justify-content: end;
+                    flex-grow: 1;
+                }
+
+                button {
+                    background-color: black;
+                    height: 35px;
+                    width: 35px;
+                    font-size: smaller;
+                    padding: 0;
+
+                    &:hover {
+                        border-color: transparent;
+                    }
+                }
+            }
+        }
+    }
+}
