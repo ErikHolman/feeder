@@ -1,17 +1,37 @@
-// import { useState } from 'react';
+import { useState } from 'react';
 import './App.css';
-import AddFeed from './components/addFeed';
-import RemoveFeed from './components/RemoveFeed';
+import Menu from './components/Menu';
+import TheFeed from './components/TheFeed';
 
 function App() {
-    // const [count, setCount] = useState(0);
+    const [menuVisible, setMenuVisible] = useState(false);
+
+    const toggleMenu = (e) => {
+        e.preventDefault();
+        setMenuVisible(!menuVisible);
+    };
 
     return (
-        <>
-            <div>This will be the feed.</div>
-            <AddFeed />
-            <RemoveFeed />
-        </>
+        <div className='feeder'>
+            <div className='header'>
+                <div className='header-items'>
+                    <h3>FEEDER</h3>
+                    <button className='hamburger' onClick={toggleMenu}>
+                        {menuVisible ? '✗' : '🍔'}
+                    </button>
+                </div>
+            </div>
+            <div className='content'>
+                {menuVisible ? (
+                    <>
+                        <Menu />
+                        <div className='blocker'></div>
+                    </>
+                ) : (
+                    <TheFeed />
+                )}
+            </div>
+        </div>
     );
 }
 

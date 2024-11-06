@@ -1,6 +1,82 @@
+body {
+    background-color: black;
+    border: 1px solid yellow;
+    overflow: hidden;
+}
+
 #root {
-    max-width: 1280px;
+    overflow: hidden;
     margin: 0 auto;
-    padding: 2rem;
-    text-align: center;
+    background-color: black;
+}
+
+button {
+    background-color: transparent;
+    border: 1px solid white;
+    color: white;
+
+    &:active {
+        background-color: white;
+        color: black;
+    }
+}
+
+.feeder {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+
+    .header {
+        background-color: green;
+        width: 100%;
+        height: 64px;
+        z-index: 999;
+
+        .header-items {
+            width: 90%;
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: space-between;
+            margin: 0 auto;
+            color: white;
+
+            .hamburger {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                width: 50px;
+                height: 50px;
+                border-radius: 2em;
+
+                &:hover {
+                    background-color: white;
+                    color: black;
+                }
+            }
+        }
+    }
+
+    .content {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        height: 100%;
+        justify-content: flex-start;
+        align-items: center;
+        overflow-y: scroll;
+
+        .blocker {
+            display: block;
+            position: absolute;
+            background-color: white !important;
+            opacity: 0.4;
+            width: 100%;
+            height: 100%;
+        }
+    }
 }
