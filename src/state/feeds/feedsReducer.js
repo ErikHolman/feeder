@@ -8,13 +8,21 @@ export const feedsReducer = createSlice({
     },
     reducers: {
         addFeeds: (state, action) => {
-            state.active = [...state.active, action.payload];
+            if (state.active.length == 0) {
+                return (state.active = [...action.payload]);
+            } else {
+                return (state.active = [...state.active, action.payload]);
+            }
         },
         muteFeeds: (state) => {
             return state;
         },
-        removeFeeds: (state) => {
-            return state;
+        removeFeeds: (state, action) => {
+            const tempState = [
+                ...state.active.slice(0, action.payload),
+                ...state.active.slice(action.payload + 1),
+            ];
+            return tempState;
         },
         updateFeeds: (state) => {
             return state;

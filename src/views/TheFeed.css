@@ -1,6 +1,65 @@
 .the-feed {
     display: flex;
+    flex-direction: column;
     height: 100%;
-    width: 100%;
-    background-color: white;
+    width: 90%;
+
+    .feed-header {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        border-bottom: 2px solid white;
+
+        h2 {
+            color: white;
+        }
+
+        .addFeed {
+            background-color: white;
+            border-color: transparent;
+
+            &:hover {
+                background-color: transparent;
+                border-color: white;
+            }
+        }
+    }
+
+    .feed {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+        align-items: center;
+        border-bottom: 1px solid lightgray;
+
+        &:last-of-type {
+            margin-bottom: 32px;
+        }
+
+        .actions {
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+            justify-content: space-evenly;
+            align-content: space-around;
+            width: 20%;
+            height: 100%;
+
+            div {
+                display: flex;
+                justify-content: space-around;
+                width: 100%;
+
+                button {
+                    display: flex;
+
+                    &:hover {
+                        background-color: white;
+                        cursor: pointer;
+                    }
+                }
+            }
+        }
+    }
 }

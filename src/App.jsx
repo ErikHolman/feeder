@@ -1,8 +1,7 @@
 import { useState } from 'react';
 import './App.css';
 import Menu from './views/Menu';
-// import TheFeed from './views/TheFeed';
-import Feeds from './state/feeds/Feeds';
+import TheFeed from './views/TheFeed';
 
 function App() {
     const [menuVisible, setMenuVisible] = useState(false);
@@ -29,7 +28,7 @@ function App() {
                         <div className='blocker'></div>
                     </>
                 ) : (
-                    <Feeds />
+                    <TheFeed />
                 )}
             </div>
         </div>

@@ -1,0 +1,83 @@
+.feed-card {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+    flex-wrap: nowrap;
+    border: 1px solid #333333;
+    border-radius: 8px;
+    padding: 16px;
+    margin: 8px;
+    width: 90%;
+    color: white;
+    font-weight: 400;
+    height: 100px;
+
+    &:first-of-type {
+        margin-top: 16px;
+    }
+
+    &:hover {
+        background-color: aliceblue;
+        cursor: pointer;
+        color: black;
+
+        > .card-image {
+            background-color: black;
+        }
+    }
+
+    &.muted {
+        border-color: lightgrey;
+        background-color: lightgray;
+        color: darkgray;
+        pointer-events: none;
+
+        .card-image {
+            border-color: white;
+        }
+    }
+
+    .card-image {
+        display: flex;
+        height: 90px;
+        width: 90px;
+        border: 1px solid red;
+        flex-grow: 0;
+    }
+
+    .card-content {
+        display: flex;
+        flex-direction: column;
+        flex-grow: 2;
+        height: 100%;
+        margin-left: 8px;
+
+        .card-header {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+
+            .title {
+                text-transform: uppercase;
+            }
+            .counter {
+                font-size: smaller;
+            }
+        }
+
+        .by-line {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            align-items: flex-start;
+            .author {
+                font-style: italic;
+                font-size: smaller;
+            }
+            .update {
+                font-size: smaller;
+            }
+        }
+    }
+}
