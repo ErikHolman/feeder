@@ -1,11 +1,14 @@
 import './TheFeed.css';
+import AddFeed from '../components/AddFeed';
 import FeedCard from '../components/FeedCard';
+import { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { addFeeds, removeFeeds } from '../state/feeds/feedsReducer';
 
 function TheFeed() {
     const currentFeeds = useSelector((state) => state.feeds.active);
     const dispatch = useDispatch();
+
+    const [addModal, setAddModal] = useState(false);
 
     const dummyFeeds = [
         {
@@ -34,21 +37,12 @@ function TheFeed() {
         },
     ];
 
-    const newFeed = () => {
-        const newFeedData = {
-            title: 'feed 1',
-            author: 'liar that lies',
-            posts: 45,
-            lastPost: '3am today',
-            url: 'http://feed1.xyz',
-            mute: false,
-        };
-
-        // dispatch(addFeeds(newFeedData));
+    const toggleAddModal = () => {
+        setAddModal(!addModal);
     };
 
     const removeFeedClick = (feed) => {
-        console.log(0);
+        // console.log(0);
         // dispatch(removeFeeds(feed));
     };
 
@@ -57,18 +51,19 @@ function TheFeed() {
             <div className='feed-header'>
                 <h2>The Feed</h2>
                 <button
-                    className='addFeed'
+                    className='addFeedButton'
                     title='Add subscription'
-                    onClick={newFeed}
+                    onClick={toggleAddModal}
                 >
                     ➕
                 </button>
             </div>
+            {addModal && <AddFeed closeModal={toggleAddModal} />}
             {dummyFeeds.length == 0 ? (
                 <>
                     <div>No Subscriptions Found!</div>
                     <br />
-                    <button onClick={newFeed}>ADD</button>
+                    <button onClick={toggleAddModal}>ADD</button>
                 </>
             ) : (
                 <>

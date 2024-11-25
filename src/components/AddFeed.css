@@ -3,36 +3,52 @@
     width: 50vw;
     display: flex;
     flex-direction: column;
-
-    .cancelAdd {
-        position: absolute;
-        top: 0;
-        right: 0;
-        margin: 1em;
-        cursor: pointer;
-    }
+    background-color: white;
+    color: black;
+    padding: 20px;
+    border-radius: 0.5em;
 
     form {
         display: flex;
         flex-direction: column;
-        align-items: space-between;
         justify-content: center;
-        input {
-            margin: 1em;
-            border: 1px solid green;
-            height: 2em;
+        align-items: stretch;
+        width: 100%;
+
+        label {
+            padding: 0;
         }
 
-        button {
-            color: white;
-            background-color: red;
-            margin: 1em;
+        input {
+            border: 1px solid green;
+            height: 2em;
+            padding: 0.5em;
+        }
 
-            &:hover {
+        .modalButtons {
+            color: white;
+            margin: 1em;
+            display: flex;
+            flex-direction: row;
+            justify-content: flex-end;
+
+            .submitForm {
+                background-color: green;
+            }
+
+            .cancel {
+                background-color: red;
+            }
+
+            button:first-of-type {
+                margin-right: 8px;
+            }
+
+            button:hover {
                 background-color: violet;
             }
 
-            &:disabled {
+            button:disabled {
                 background-color: ghostwhite;
                 cursor: not-allowed;
                 border-color: darkgray;

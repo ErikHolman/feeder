@@ -1,16 +1,47 @@
 import './AddFeed.css';
+import { useDispatch } from 'react-redux';
+// import { addFeeds } from '../state/feeds/feedsReducer';
 
-const AddFeed = () => {
+const AddFeed = ({ closeModal }) => {
+    const dispatch = useDispatch();
+
+    const createFeed = (event) => {
+        event.preventDefault();
+        console.log(`event`, event);
+        // dispatch(addFeeds());
+    };
+
     return (
-        <div className='addFeed'>
-            <h3>Add a feed</h3>
-            <form id='addFeed'>
-                <input type='text' placeholder='Insert feed url...'></input>
-                <button type='submit' disabled>
-                    Add!
-                </button>
-            </form>
-            <div className='cancelAdd'>X</div>
+        <div className='modal'>
+            <div className='addFeed'>
+                <h3>Add a feed</h3>
+                <form id='addFeed'>
+                    <label id='url'>RSS Feed Location</label>
+                    <input
+                        id='url'
+                        type='text'
+                        placeholder='Insert feed url...'
+                        required
+                    ></input>
+                    <div className='modalButtons'>
+                        <button
+                            className='cancel'
+                            type='cancel'
+                            onClick={closeModal}
+                        >
+                            Cancel
+                        </button>
+                        <button
+                            className='submitForm'
+                            type='submit'
+                            onClick={createFeed}
+                            disabled
+                        >
+                            Add!
+                        </button>
+                    </div>
+                </form>
+            </div>
         </div>
     );
 };
