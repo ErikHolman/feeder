@@ -9,7 +9,7 @@
     padding: 16px;
     margin: 8px;
     width: 90%;
-    color: white;
+    color: black;
     font-weight: 400;
     height: 100px;
 
@@ -18,9 +18,9 @@
     }
 
     &:hover {
-        background-color: aliceblue;
+        background-color: black;
         cursor: pointer;
-        color: black;
+        color: white;
 
         > .card-image {
             background-color: black;

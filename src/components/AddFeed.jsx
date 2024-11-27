@@ -14,33 +14,38 @@ const AddFeed = ({ closeModal }) => {
     return (
         <div className='modal'>
             <div className='addFeed'>
-                <h3>Add a feed</h3>
-                <form id='addFeed'>
-                    <label id='url'>RSS Feed Location</label>
-                    <input
-                        id='url'
-                        type='text'
-                        placeholder='Insert feed url...'
-                        required
-                    ></input>
-                    <div className='modalButtons'>
-                        <button
-                            className='cancel'
-                            type='cancel'
-                            onClick={closeModal}
-                        >
-                            Cancel
-                        </button>
-                        <button
-                            className='submitForm'
-                            type='submit'
-                            onClick={createFeed}
-                            disabled
-                        >
-                            Add!
-                        </button>
-                    </div>
-                </form>
+                <button className='closeAdd' title='close' onClick={closeModal}>
+                    X
+                </button>
+                <div className='addFormContent'>
+                    <h3>Add a feed</h3>
+                    <form id='addFeed'>
+                        <label id='url'>RSS Feed Location</label>
+                        <input
+                            id='url'
+                            type='text'
+                            placeholder='Insert feed url...'
+                            required
+                        ></input>
+                        <div className='modalButtons'>
+                            <button
+                                className='cancel'
+                                type='cancel'
+                                onClick={closeModal}
+                            >
+                                Cancel
+                            </button>
+                            <button
+                                className='submitForm'
+                                type='submit'
+                                onClick={createFeed}
+                                disabled
+                            >
+                                Add!
+                            </button>
+                        </div>
+                    </form>
+                </div>
             </div>
         </div>
     );

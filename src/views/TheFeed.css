@@ -14,52 +14,25 @@
         h2 {
             color: white;
         }
+    }
 
-        .addFeedButton {
-            background-color: white;
-            border-color: transparent;
+    .addFeedButton {
+        background-color: white;
+        border-color: transparent;
 
-            &:hover {
-                background-color: transparent;
-                border-color: white;
-            }
+        &:hover {
+            background-color: transparent;
+            border-color: white;
         }
     }
 
-    .feed {
+    .no-feeds {
         display: flex;
-        flex-direction: row;
-        justify-content: space-around;
+        flex-direction: column;
+        color: white;
+        justify-content: center;
         align-items: center;
-        border-bottom: 1px solid lightgray;
-
-        &:last-of-type {
-            margin-bottom: 32px;
-        }
-
-        .actions {
-            display: flex;
-            flex-direction: row;
-            flex-wrap: wrap;
-            justify-content: space-evenly;
-            align-content: space-around;
-            width: 20%;
-            height: 100%;
-
-            div {
-                display: flex;
-                justify-content: space-around;
-                width: 100%;
-
-                button {
-                    display: flex;
-
-                    &:hover {
-                        background-color: white;
-                        cursor: pointer;
-                    }
-                }
-            }
-        }
+        height: 40px;
+        margin-top: 3em;
     }
 }

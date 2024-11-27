@@ -1,15 +1,14 @@
 .menu {
     display: flex;
     flex-direction: column;
-    width: 80%;
-    height: 80%;
-    border: 1px solid green;
     justify-content: space-around;
     align-items: center;
-    background-color: black;
-    color: white;
-    z-index: 999;
+    color: black;
     margin-top: 2rem;
+    padding: 20px;
+    border-radius: 0.5em;
+    border: 2px solid red;
+    background-color: white;
 
     .feed-buttons {
         display: flex;
@@ -25,25 +24,26 @@
     .feed-list {
         display: flex;
         flex-direction: column;
-        border: 1px solid white;
-        width: 70%;
-        height: 400px;
-        padding: 0 1em;
-        margin: 0 auto;
+        align-items: flex-end;
+        width: 100%;
+        .close-menu {
+            display: flex;
+            flex-direction: row;
+            width: fit-content;
+            color: black;
+        }
 
         .list-title {
             display: flex;
             flex-direction: row;
             justify-content: space-between;
             align-items: center;
-            height: 50px;
-            .list-left {
-                display: flex;
-                flex-direction: row;
-                align-items: center;
-                justify-content: space-between;
-                width: 70%;
-                margin-left: 0.25em;
+            height: 40px;
+            padding: 4px;
+            width: 100%;
+
+            & div {
+                margin-right: 2.75em;
             }
         }
 
@@ -51,59 +51,43 @@
             border-top: 1px solid white;
             display: flex;
             flex-direction: column;
-            /* overflow-y: scroll; */
+            overflow-y: scroll;
             margin-bottom: 1em;
             width: 100%;
 
             .feed {
                 display: flex;
                 flex-direction: row;
-                justify-content: space-between;
+                justify-content: space-around;
                 align-items: center;
-                margin-top: 0.25em;
-                background-color: aliceblue;
+                border-bottom: 1px solid lightgray;
 
-                &.muted {
-                    opacity: 0.5;
+                &:last-of-type {
+                    margin-bottom: 32px;
                 }
-                .feed-left {
+
+                .actions {
                     display: flex;
                     flex-direction: row;
-                    justify-content: space-between;
-                    flex-grow: 5;
-                    margin-left: 0.25em;
-                    .title {
-                        text-transform: uppercase;
-                        color: black;
-                        &:hover {
-                            text-decoration: underline;
-                            font-style: italic;
+                    flex-wrap: wrap;
+                    justify-content: space-evenly;
+                    align-content: space-around;
+                    width: 20%;
+                    height: 100%;
+
+                    div {
+                        display: flex;
+                        justify-content: space-around;
+                        width: 100%;
+
+                        button {
+                            display: flex;
+
+                            &:hover {
+                                background-color: white;
+                                cursor: pointer;
+                            }
                         }
-                    }
-
-                    .count {
-                        color: black;
-                        text-align: center;
-                        margin-right: 2rem;
-                    }
-                }
-
-                .feed-right {
-                    display: flex;
-                    flex-direction: row;
-                    justify-content: end;
-                    flex-grow: 1;
-                }
-
-                button {
-                    background-color: black;
-                    height: 35px;
-                    width: 35px;
-                    font-size: smaller;
-                    padding: 0;
-
-                    &:hover {
-                        border-color: transparent;
                     }
                 }
             }

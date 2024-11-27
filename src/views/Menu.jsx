@@ -1,62 +1,122 @@
 import './Menu.css';
+import AddFeed from '../components/AddFeed';
+import FeedCard from '../components/FeedCard';
+import { useState } from 'react';
 
-const Menu = () => {
-    let feeds = [
-        { title: 'feed 1', posts: 45, url: 'http://feed1.xyz', mute: false },
-        { title: 'feed 2', posts: 3, url: 'http://feed2.xyz', mute: true },
-        { title: 'feed 3', posts: 55, url: 'http://feed3.xyz', mute: false },
+const Menu = ({ closeMenu }) => {
+    const dummyFeeds = [
+        {
+            title: 'feed 1',
+            author: 'liar that lies',
+            posts: 45,
+            lastPost: '3am today',
+            url: 'http://feed1.xyz',
+            mute: false,
+        },
+        {
+            title: 'feed 2',
+            author: 'the entire province of Nova Scotia',
+            posts: 3,
+            lastPost: '234 days ago',
+            url: 'http://feed2.xyz',
+            mute: true,
+        },
+        {
+            title: 'feed 3',
+            author: 'a literal cat',
+            lastPost: 'tomorrow somwhow',
+            posts: 55,
+            url: 'http://feed3.xyz',
+            mute: false,
+        },
     ];
 
-    return (
-        <div className='menu'>
-            <div className='feed-list'>
-                <div className='list-title'>
-                    <div className='list-left'>
-                        <h4>FEEDS</h4>
-                    </div>
-                    <div>Actions</div>
-                </div>
-                <div className='list-feeds'>
-                    {feeds.map((feed, index) => {
-                        return (
-                            <div
-                                className={feed.mute ? 'feed muted' : 'feed'}
-                                key={index}
-                            >
-                                <div className='feed-left'>
-                                    <a href={feed.url}>
-                                        <div className='title'>
-                                            {feed.title} -{' '}
-                                            <span className='count'>
-                                                <em>{feed.posts}</em>
-                                            </span>
-                                        </div>
-                                    </a>
-                                </div>
-                                <div className='feed-right'>
-                                    <button title='edit feed'>✏️</button>
-                                    <button title='refresh feed'>🔁</button>
-                                    <button
-                                        title={
-                                            feed.mute
-                                                ? `unmute ${feed.title}`
-                                                : `mute ${feed.title}`
-                                        }
-                                    >
-                                        {feed.mute ? '🔔' : '🔕'}
-                                    </button>
-                                    <button title='kill feed'>🗑️</button>
-                                </div>
-                            </div>
-                        );
-                    })}
-                </div>
-            </div>
+    const [addModal, setAddModal] = useState(false);
 
-            <div className='feed-buttons'>
-                <button title='add feed' className='edit-feeds'>
-                    ➕
-                </button>
+    const toggleAddModal = () => {
+        setAddModal(!addModal);
+    };
+
+    const removeFeedClick = (feed) => {
+        // console.log(0);
+        // dispatch(removeFeeds(feed));
+    };
+
+    return (
+        <div className='modal'>
+            <div className='menu'>
+                <div className='feed-list'>
+                    <button
+                        className='close-menu'
+                        title='close'
+                        onClick={closeMenu}
+                    >
+                        X
+                    </button>
+                    <div className='list-title'>
+                        <h4>FEEDS</h4>
+                        <div>Actions</div>
+                    </div>
+                    {addModal && <AddFeed closeModal={toggleAddModal} />}
+                    <div className='list-feeds'>
+                        {dummyFeeds.map((feed, index) => {
+                            return (
+                                <div className='feed' key={index}>
+                                    <FeedCard
+                                        author={feed.author}
+                                        updated={feed.lastPost}
+                                        link={feed.url}
+                                        title={feed.title}
+                                        posts={feed.posts}
+                                        muted={feed.mute}
+                                    />
+                                    <div className='actions'>
+                                        <div>
+                                            <button
+                                                title={`Edit '${feed.title}'`}
+                                            >
+                                                ✏️
+                                            </button>
+                                            <button
+                                                title={`Refresh '${feed.title}'`}
+                                            >
+                                                🔁
+                                            </button>
+                                        </div>
+                                        <div>
+                                            <button
+                                                title={
+                                                    feed.mute
+                                                        ? `Unmute '${feed.title}'`
+                                                        : `Mute '${feed.title}'`
+                                                }
+                                                onClick={removeFeedClick(index)}
+                                            >
+                                                {feed.mute ? '🔔' : '🔕'}
+                                            </button>
+                                            <button
+                                                title={`Unsubscribe from '${feed.title}'`}
+                                                onClick={removeFeedClick(index)}
+                                            >
+                                                🗑️
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            );
+                        })}
+                    </div>
+                </div>
+
+                <div className='feed-buttons'>
+                    <button
+                        title='add feed'
+                        className='edit-feeds'
+                        onClick={toggleAddModal}
+                    >
+                        ➕
+                    </button>
+                </div>
             </div>
         </div>
     );

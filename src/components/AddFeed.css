@@ -1,58 +1,71 @@
 .addFeed {
     border: 2px solid red;
-    width: 50vw;
+    width: 35%;
     display: flex;
     flex-direction: column;
     background-color: white;
     color: black;
     padding: 20px;
     border-radius: 0.5em;
+    align-items: flex-end;
 
-    form {
+    .closeAdd {
+        display: flex;
+        flex-direction: row;
+        width: fit-content;
+        color: black;
+    }
+    .addFormContent {
         display: flex;
         flex-direction: column;
-        justify-content: center;
-        align-items: stretch;
         width: 100%;
 
-        label {
-            padding: 0;
-        }
-
-        input {
-            border: 1px solid green;
-            height: 2em;
-            padding: 0.5em;
-        }
-
-        .modalButtons {
-            color: white;
-            margin: 1em;
+        form {
             display: flex;
-            flex-direction: row;
-            justify-content: flex-end;
+            flex-direction: column;
+            justify-content: center;
+            align-items: stretch;
+            width: 100%;
 
-            .submitForm {
-                background-color: green;
+            label {
+                padding: 0;
             }
 
-            .cancel {
-                background-color: red;
+            input {
+                border: 1px solid green;
+                height: 2em;
+                padding: 0.5em;
             }
 
-            button:first-of-type {
-                margin-right: 8px;
-            }
+            .modalButtons {
+                color: white;
+                margin: 1em;
+                display: flex;
+                flex-direction: row;
+                justify-content: flex-end;
 
-            button:hover {
-                background-color: violet;
-            }
+                .submitForm {
+                    background-color: green;
+                }
 
-            button:disabled {
-                background-color: ghostwhite;
-                cursor: not-allowed;
-                border-color: darkgray;
-                color: darkgray;
+                .cancel {
+                    background-color: red;
+                }
+
+                button:first-of-type {
+                    margin-right: 8px;
+                }
+
+                button:hover {
+                    background-color: violet;
+                }
+
+                button:disabled {
+                    background-color: ghostwhite;
+                    cursor: not-allowed;
+                    border-color: darkgray;
+                    color: darkgray;
+                }
             }
         }
     }
