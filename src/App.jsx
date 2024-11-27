@@ -19,8 +19,12 @@ function App() {
             <div className='header'>
                 <div className='header-items'>
                     <h3>FEEDER</h3>
-                    <button className='configuration' onClick={toggleMenu}>
-                        {menuVisible ? '✗' : '⚙️'}
+                    <button
+                        className='configuration'
+                        title='Configure subscriptions'
+                        onClick={toggleMenu}
+                    >
+                        ⚙️
                     </button>
                 </div>
             </div>
