@@ -1,14 +1,18 @@
 import './TheFeed.css';
 import AddFeed from '../components/AddFeed';
 import { useState } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
+import { useSelector } from 'react-redux';
+import FeedCard from '../components/FeedCard';
 
 function TheFeed() {
     const currentFeeds = useSelector((state) => state.feeds.active);
-    const dispatch = useDispatch();
 
     const [addModal, setAddModal] = useState(false);
 
+    /**
+     * Toggles Add Modal visibility
+     * @default False
+     */
     const toggleAddModal = () => {
         setAddModal(!addModal);
     };
@@ -38,6 +42,12 @@ function TheFeed() {
                     </button>
                 </div>
             )}
+            {currentFeeds.length > 0 &&
+                currentFeeds.map((index, feed) => {
+                    console.log(index, feed);
+                    <FeedCard feed={feed} />;
+                })}
+            {JSON.stringify(currentFeeds)}
         </div>
     );
 }

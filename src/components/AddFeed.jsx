@@ -1,15 +1,96 @@
 import './AddFeed.css';
+import { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
-// import { addFeeds } from '../state/feeds/feedsReducer';
+import { addFeeds } from '../state/feeds/feedsReducer';
 
 const AddFeed = ({ closeModal }) => {
     const dispatch = useDispatch();
+    const [formData, setFormData] = useState({
+        name: '',
+        url: '',
+    });
+    const [formReady, setFormReady] = useState(false);
+    const [feedLoad, setFeedLoad] = useState(false);
 
-    const createFeed = (event) => {
-        event.preventDefault();
-        console.log(`event`, event);
-        // dispatch(addFeeds());
+    /**
+     * Evaluates if the form is ready for submission
+     * @returns Boolean - sets formReady status
+     */
+    const isFormReady = () => {
+        // Name AND url are empty - Empty form
+        if (formData.url == '' && formData.name == '') {
+            setFormReady(false);
+            console.log('both blank', formReady);
+            return;
+        }
+
+        // Name OR url is empty - Partially complete form
+        if (
+            (formData.url != '' && formData.name == '') ||
+            (formData.url == '' && formData.name != '')
+        ) {
+            setFormReady(false);
+            console.log('one blank', formReady);
+            return;
+        }
+
+        // Name AND url are not empty - Complete form
+        if (formData.url != '' && formData.name != '') {
+            setFormReady(true);
+            console.log('none blank', formReady);
+            return;
+        }
     };
+
+    /**
+     * Handles form entry for formData.url
+     * @param {event}
+     */
+    const handleUrlChange = (event) => {
+        if (event.target.value == '') {
+            setFormData({ ...formData, url: event.target.value });
+        } else {
+            setFormData({ ...formData, url: event.target.value });
+        }
+        isFormReady();
+    };
+
+    /**
+     * Handles form entry for formData.name
+     * @param {event}
+     */
+    const handleNameChange = (event) => {
+        if (event.target.value == '') {
+            setFormData({ ...formData, name: event.target.value });
+        } else {
+            setFormData({ ...formData, name: event.target.value });
+        }
+        isFormReady();
+    };
+
+    /**
+     * Handles adding the new feed to State
+     * @param {event}
+     */
+    async function createFeed(event) {
+        event.preventDefault();
+        console.log('formData:', formData);
+
+        try {
+            dispatch(addFeeds(formData));
+            setFeedLoad(true);
+        } catch (error) {
+            console.log(error);
+        } finally {
+            setTimeout(() => {
+                setFeedLoad(false);
+                setFormData({
+                    name: '',
+                    url: '',
+                });
+            }, 2000);
+        }
+    }
 
     return (
         <div className='modal'>
@@ -18,14 +99,29 @@ const AddFeed = ({ closeModal }) => {
                     X
                 </button>
                 <div className='addFormContent'>
-                    <h3>Add a feed</h3>
+                    <h3>Add an RSS Feed</h3>
                     <form id='addFeed'>
-                        <label id='url'>RSS Feed Location</label>
+                        <label id='url'>Location on the Internet</label>
                         <input
-                            id='url'
+                            htmlFor='url'
                             type='text'
                             placeholder='Insert feed url...'
+                            name='feedURL'
+                            value={formData.url}
+                            onChange={handleUrlChange}
                             required
+                            disabled={feedLoad}
+                        ></input>
+                        <label htmlFor='name'>Friendly Name</label>
+                        <input
+                            id='name'
+                            type='text'
+                            placeholder='Give it a familiar name...'
+                            name='feedName'
+                            value={formData.name}
+                            onChange={handleNameChange}
+                            required
+                            disabled={feedLoad}
                         ></input>
                         <div className='modalButtons'>
                             <button
@@ -37,11 +133,11 @@ const AddFeed = ({ closeModal }) => {
                             </button>
                             <button
                                 className='submitForm'
-                                type='submit'
                                 onClick={createFeed}
-                                disabled
+                                type='submit'
+                                disabled={feedLoad || !formReady}
                             >
-                                Add!
+                                {feedLoad ? '📡' : 'Add!'}
                             </button>
                         </div>
                     </form>

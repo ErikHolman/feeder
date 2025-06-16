@@ -7,16 +7,33 @@ export const feedsReducer = createSlice({
         muted: [],
     },
     reducers: {
+        /**
+         * Adds element to State
+         * @param {Object} state
+         * @param {*} action
+         * @returns Mutated State
+         */
         addFeeds: (state, action) => {
-            if (state.active.length == 0) {
-                return (state.active = [...action.payload]);
-            } else {
-                return (state.active = [...state.active, action.payload]);
-            }
+            state.active.push({ url: action.payload });
+            return state;
         },
+
+        /**
+         * Modifies element to/from 'Mute' status
+         * @param {Object} state
+         * @param {*} action
+         * @returns Mutated State
+         */
         muteFeeds: (state) => {
             return state;
         },
+
+        /**
+         * Removes element from State
+         * @param {Object} state
+         * @param {*} action
+         * @returns Mutated State
+         */
         removeFeeds: (state, action) => {
             const tempState = [
                 ...state.active.slice(0, action.payload),
@@ -24,6 +41,13 @@ export const feedsReducer = createSlice({
             ];
             return tempState;
         },
+
+        /**
+         * Updates element in State
+         * @param {Object} state
+         * @param {*} action
+         * @returns Mutated State
+         */
         updateFeeds: (state) => {
             return state;
         },
@@ -31,6 +55,6 @@ export const feedsReducer = createSlice({
 });
 
 // Action creators are generated for each case reducer function
-export const { addFeeds, removeFeeds } = feedsReducer.actions;
+export const { addFeeds } = feedsReducer.actions;
 
 export default feedsReducer;
